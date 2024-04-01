@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tính tiền cáp</title>
+
+    </head>
+    <body>
+        <label for="maKhachHang">Mã khách hàng:</label>
+        <input type="text" id="maKhachHang"><br><br>
+
+        <label for="loaiKhachHang">Loại khách hàng:</label>
+        <select id="loaiKhachHang" onchange="hienThiSoKetNoi()">
+            <option value="NhaDan">Nhà dân</option>
+            <option value="DoanhNghiep">Doanh nghiệp</option>
+        </select><br><br>
+
+        <div id="soKetNoiInput" style="display: none;">
+            <label for="soKetNoi">Số kết nối:</label>
+            <input type="number" id="soKetNoi"><br><br>
+        </div>
+
+        <label for="soKenhCaoCap">Số kênh cao cấp:</label>
+        <input type="number" id="soKenhCaoCap"><br><br>
+
+        <button onclick="tinhHoaDon()">Tính hóa đơn</button><br><br>
+
+        <div id="tongTien"></div>
+        <script src="./index.js"></script>
+    </body>
+</html>

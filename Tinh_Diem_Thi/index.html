@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tính điểm trúng tuyển</title>
+        <script>
+        function kiemTraTrungTuyen() {
+            // Lấy giá trị từ các ô input
+            var diemChuan = parseFloat(document.getElementById("diemChuan").value);
+            var diemMon1 = parseFloat(document.getElementById("diemMon1").value);
+            var diemMon2 = parseFloat(document.getElementById("diemMon2").value);
+            var diemMon3 = parseFloat(document.getElementById("diemMon3").value);
+            var khuVuc = document.getElementById("khuVuc").value;
+            var doiTuong = parseInt(document.getElementById("doiTuong").value);
+
+            // Kiểm tra điểm môn thi có bằng 0 không
+            if (diemMon1 === 0 || diemMon2 === 0 || diemMon3 === 0) {
+                alert("Rất tiếc! Bạn không trúng tuyển vì có môn thi điểm 0.");
+                return;
+            }
+
+            // Tính tổng điểm và điểm ưu tiên
+            var tongDiem = diemMon1 + diemMon2 + diemMon3;
+            var diemUuTien = 0;
+            if (khuVuc !== "x") {
+                diemUuTien += 1;
+            }
+            if (doiTuong !== 0) {
+                diemUuTien += 2;
+            }
+
+            // Kiểm tra điều kiện trúng tuyển
+            if (tongDiem + diemUuTien >= diemChuan) {
+                alert("Chúc mừng! Bạn đã trúng tuyển. Tổng điểm đạt được: " + (tongDiem + diemUuTien));
+            } else {
+                alert("Rất tiếc! Bạn không trúng tuyển.");
+            }
+        }
+    </script>
+    </head>
+    <body>
+        <h1>Tính điểm trúng tuyển</h1>
+        <label for="diemChuan">Điểm chuẩn:</label>
+        <input type="number" id="diemChuan"><br><br>
+
+        <label for="diemMon1">Điểm môn 1:</label>
+        <input type="number" id="diemMon1"><br><br>
+
+        <label for="diemMon2">Điểm môn 2:</label>
+        <input type="number" id="diemMon2"><br><br>
+
+        <label for="diemMon3">Điểm môn 3:</label>
+        <input type="number" id="diemMon3"><br><br>
+
+        <label for="khuVuc">Khu vực ưu tiên:</label>
+        <select id="khuVuc">
+            <option value="x">Không</option>
+            <option value="A">Khu vực A</option>
+            <option value="B">Khu vực B</option>
+            <option value="C">Khu vực C</option>
+        </select><br><br>
+
+        <label for="doiTuong">Đối tượng ưu tiên:</label>
+        <select id="doiTuong">
+            <option value="0">Không</option>
+            <option value="1">Đối tượng 1</option>
+            <option value="2">Đối tượng 2</option>
+            <option value="3">Đối tượng 3</option>
+        </select><br><br>
+
+        <button onclick="kiemTraTrungTuyen()">Kiểm tra</button>
+        <script src="./index.js"></script>
+    </body>
+</html>
